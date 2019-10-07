@@ -14,7 +14,7 @@
 ICON::ICON(QWidget *parent) :
     QWidget(parent)
 {
-    ////////////////git hub////////
+
     resize(1024, 768);
     setAutoFillBackground(true);//배경을 쓰려면 필요함
     setAttribute(Qt::WA_DeleteOnClose);
