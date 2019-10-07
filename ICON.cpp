@@ -58,35 +58,44 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     if(me->button() != Qt::LeftButton) return;
 
     QRect end(23, 698, 53, 53);
-    QRect bt_1(28, 298, 54, 54);
-    QRect bt_2(28, 358, 54, 54);
-    QRect bt_3(28, 478, 54, 54);
+    QRect bt_1(28, 238, 54, 54);
+    QRect bt_2(28, 298, 54, 54);
+    QRect bt_3(28, 358, 54, 54);
+    QRect bt_4(28, 478, 54, 54);
 
 
     if(end.contains(me->x(),me->y()))
     {
         this->close();
     }
+
     else if(bt_1.contains(me->x(), me->y()))
+    {
+        Process = new QProcess(this);
+        Process->start("/home/lubuntu");
+        qDebug()<<"Trash START";
+        update(bt_1);
+    }
+    else if(bt_2.contains(me->x(), me->y()))
     {
         Process = new QProcess(this);
         Process->start("/home/lubuntu/lotto/lotto");
         qDebug()<<"Lotto Program START";
-        update(bt_1);
-    }
-    else if(bt_2.contains(me->x(),me->y()))
-    {
-        Process = new QProcess(this);
-        Process->start("/usr/bin/leafpad");
-        qDebug()<<"LeafPad";
         update(bt_2);
     }
     else if(bt_3.contains(me->x(),me->y()))
     {
         Process = new QProcess(this);
+        Process->start("/usr/bin/leafpad");
+        qDebug()<<"LeafPad";
+        update(bt_3);
+    }
+    else if(bt_4.contains(me->x(),me->y()))
+    {
+        Process = new QProcess(this);
         Process->start("/usr/bin/galculator");
         qDebug()<<"Galculator Program START";
-        update(bt_3);
+        update(bt_4);
     }
 
 }
