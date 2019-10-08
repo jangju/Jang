@@ -11,6 +11,7 @@
 #include <QMouseEvent>
 #include <QPalette>
 #include <QProcess>
+
 class ICON : public QWidget
 {
     Q_OBJECT
@@ -29,7 +30,8 @@ private slots:
     void iconshot();
 private:
 
-    QLabel *IC_image = nullptr;
+    QLabel *IC_trash = nullptr;
+    QLabel *IC_baseball = nullptr;
     QLabel *IC_lotto = nullptr;
     QLabel *IC_memo = nullptr;
     QLabel *IC_floder = nullptr;
