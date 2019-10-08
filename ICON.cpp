@@ -1,7 +1,10 @@
 #include "ICON.h"
 #include "mainwindow.h"
 
+#include <QDesktopServices> // 파일오픈 설정
+
 #define TRASH "/home/lubuntu/recttest/Image/trash.png"
+#define BASEBALL "/home/lubuntu/recttest/Image/BASEBALLICON.png"
 #define LOTTO "/home/lubuntu/recttest/Image/Lotto.png"
 #define MEMO "/home/lubuntu/recttest/Image/memo.png"
 #define FOLDER "/home/lubuntu/recttest/Image/folder.png"
@@ -14,7 +17,6 @@
 ICON::ICON(QWidget *parent) :
     QWidget(parent)
 {
-
     resize(1024, 768);
     setAutoFillBackground(true);//배경을 쓰려면 필요함
     setAttribute(Qt::WA_DeleteOnClose);
@@ -38,8 +40,8 @@ void ICON::mousePressEvent(QMouseEvent *me)
     if(bt.contains(me->x(), me->y()))
     {
         IC_end2 = new QLabel(this);
-        IC_end2->setGeometry(QRect(50, 300, 150, 150));
-        IC_end2->setPixmap(QPixmap(ENDD));
+        IC_end2->setGeometry(QRect(25, 700, 50, 50));
+        IC_end2->setPixmap(QPixmap(ENDD));//종료버튼
         //if(b_once_setup)
         //{
         //   b_once_setup = false; //한번만 실행되게 함
@@ -58,29 +60,37 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     if(me->button() != Qt::LeftButton) return;
 
     QRect end(23, 698, 53, 53);
+    QRect bt_0(28, 178, 54, 54);
     QRect bt_1(28, 238, 54, 54);
     QRect bt_2(28, 298, 54, 54);
     QRect bt_3(28, 358, 54, 54);
-    QRect bt_4(28, 478, 54, 54);
+    QRect bt_4(28, 418, 54, 54);
+    QRect bt_5(28, 478, 54, 54);
 
 
     if(end.contains(me->x(),me->y()))
     {
         this->close();
     }
-
+    else if(bt_0.contains(me->x(), me->y()))
+    {
+        Process = new QProcess(this);
+        Process->start("/home/lubuntu/baseball/baseball");
+        qDebug()<<"BaseBall game START";
+        update(bt_0);
+    }
     else if(bt_1.contains(me->x(), me->y()))
     {
         Process = new QProcess(this);
-        Process->start("/home/lubuntu");
-        qDebug()<<"Trash START";
+        Process->start("/home/lubuntu/baseball/baseball");
+        qDebug()<<"BaseBall game START";
         update(bt_1);
     }
     else if(bt_2.contains(me->x(), me->y()))
     {
         Process = new QProcess(this);
         Process->start("/home/lubuntu/lotto/lotto");
-        qDebug()<<"Lotto Program START";
+        qDebug()<<"Lotto TEST START";
         update(bt_2);
     }
     else if(bt_3.contains(me->x(),me->y()))
@@ -92,10 +102,16 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     }
     else if(bt_4.contains(me->x(),me->y()))
     {
+        QDesktopServices::openUrl(QUrl("file:///home/lubuntu",QUrl::TolerantMode));//폴더오픈 소스
+        qDebug()<<"Folder Open";
+
+    }
+    else if(bt_5.contains(me->x(),me->y()))
+    {
         Process = new QProcess(this);
         Process->start("/usr/bin/galculator");
         qDebug()<<"Galculator Program START";
-        update(bt_4);
+        update(bt_5);
     }
 
 }
@@ -103,9 +119,15 @@ void ICON::iconshot()
 {
     qDebug()<<"absbasbregreagwragwragwragbasb";
 
-    IC_image = new QLabel(this);
-    IC_image->setGeometry(QRect(30, 240, 50, 50));
-    IC_image->setPixmap(QPixmap(TRASH));
+
+
+    IC_trash = new QLabel(this);
+    IC_trash->setGeometry(QRect(30, 60, 50, 50));
+    IC_trash->setPixmap(QPixmap(TRASH));
+
+    IC_baseball = new QLabel(this);
+    IC_baseball->setGeometry(QRect(30, 240, 50, 50));
+    IC_baseball->setPixmap(QPixmap(BASEBALL));
 
     IC_lotto = new QLabel(this);
     IC_lotto->setGeometry(QRect(30, 300, 50, 50));
