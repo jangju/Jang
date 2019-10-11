@@ -30,6 +30,28 @@ ICON::ICON(QWidget *parent) :
     iconshot();//아이콘들 출력
 
 }
+ICON::~ICON()
+{
+    delete IC_trash;
+    delete IC_baseball;
+    delete IC_lotto;
+    delete IC_memo;
+    delete IC_floder;
+    delete IC_calculator;
+    delete IC_end;
+    delete IC_end2;
+
+    //실행파일 해제
+    if(Process!=nullptr)
+    {
+        if(Process->isOpen())
+        {
+            Process->close();
+        }
+        Process->deleteLater();
+    }
+
+}
 
 void ICON::mousePressEvent(QMouseEvent *me)
 {
@@ -152,18 +174,5 @@ void ICON::iconshot()
 
     //move(30, 300);
 
-
-}
-ICON::~ICON()
-{
-    //실행파일 해제
-    if(Process!=nullptr)
-    {
-        if(Process->isOpen())
-        {
-            Process->close();
-        }
-        Process->deleteLater();
-    }
 
 }
