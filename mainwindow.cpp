@@ -27,11 +27,18 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(screen_timer, SIGNAL(timeout()), this, SLOT(timer_Screen_Stop()));
 
 }
+MainWindow::~MainWindow()
+{
+    if(screen_timer != nullptr) screen_timer->stop();
+    delete text_label;
+    delete ui;
+
+}
 
 /*
 void MainWindow::paintEvent(QPaintEvent *)//프로그램이 돌아가는동안 이벤트는 계속
 {
-     QPainter painter(this);
+    QPainter painter(this);
 //  painter.drawPixmap(0 ,0, QPixmap(window));//윈도우 배경 출력
     painter.setPen(QColor(Qt::red));
     //painter.drawRect(28, 298, 54, 54);
@@ -46,7 +53,6 @@ void MainWindow::paintEvent(QPaintEvent *)//프로그램이 돌아가는동안 �
     painter.drawRect(28, 478, 54, 54);
 
     qDebug()<<"====================================";
-
 }
 */
 void MainWindow::timer_Screen_Stop()
@@ -110,9 +116,4 @@ void MainWindow::changePage(const int page_number)
 
 }
 
-MainWindow::~MainWindow()
-{
-    //if(screen_timer != nullptr) screen_timer->stop();
-    delete ui;
-}
 
