@@ -19,14 +19,11 @@ public:
     explicit ICON(QWidget *parent = 0);
     virtual ~ICON();
 protected:
+    void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
     void mousePressEvent(QMouseEvent *me) Q_DECL_OVERRIDE;
     void mouseReleaseEvent(QMouseEvent *me) Q_DECL_OVERRIDE;
 
-
-    int i_base_image_flag = 0;
-
 private slots:
-
     void iconshot();
 private:
 
@@ -40,10 +37,11 @@ private:
     QLabel *IC_end2 = nullptr;
 
 
+
     bool b_check_click = true;
     bool b_once_setup = true;
 
-
+    int i_base_image_flag;
 
     QProcess *Process;
 
