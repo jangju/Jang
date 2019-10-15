@@ -28,13 +28,15 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     rect.cpp \
-    ICON.cpp
+    ICON.cpp \
+    base_widget.cpp
 
 
 HEADERS += \
         mainwindow.h \
     rect.h \
-    ICON.h
+    ICON.h \
+    base_widget.h
 
 
 FORMS += \

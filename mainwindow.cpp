@@ -9,33 +9,28 @@
 #define BG_WINDOW "/home/lubuntu/recttest/Image/window.png"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QMainWindow(parent/*,Qt::FramelessWindowHint프례임을 없엠( 메뉴바 )*/),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    //setWindowFlags(Qt::CustomizeWindowHint);//윈도우 프레임을 없애는 함수
-
-    new ICON(this);
 
     QPalette pal = palette();
     pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_WINDOW)));//윈도우 배경 출력
     setPalette(pal);
 
-
+    changePage(0);
     // (new Rect(this))->show();
     ////////////타이머 멈춤///////////////
     screen_timer = new QTimer(this);
     connect(screen_timer, SIGNAL(timeout()), this, SLOT(timer_Screen_Stop()));
 
 }
+
 MainWindow::~MainWindow()
 {
     if(screen_timer != nullptr) screen_timer->stop();
     delete text_label;
     delete ui;
-
-
 }
 
 /*
@@ -68,6 +63,7 @@ void MainWindow::timer_Screen_Stop()
     }
 
 }
+
 void MainWindow::mousePressEvent(QMouseEvent *me)
 {
     if(me->button() != Qt::LeftButton) return;//마우스 왼쪽버튼 실행
@@ -83,7 +79,6 @@ void MainWindow::mousePressEvent(QMouseEvent *me)
     }
 }
 
-
 void MainWindow::mouseReleaseEvent(QMouseEvent *me)
 {
     if(me->button() != Qt::LeftButton) return;//마우스 왼쪽버튼 실행
@@ -97,28 +92,43 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *me)
     {
 
         qDebug()<<"AAAAAAAAAAAAAAAAAAAAAAAAAAA";
-        //update(bt_1);
+        update(bt_1);
+
     }
     else if(bt_2.contains(me->x(), me->y()))
     {
         qDebug()<<"BBBBBBBBBBBBBBBBBBBBBBBBBBB";
-        //update(bt_2);
+        update(bt_2);
     }
     else if(bt_3.contains(me->x(), me->y()))
     {
         qDebug()<<"CCCCCCCCCCCCCCCCCCCCCCCCCCC";
-        //update(bt_3);
+        update(bt_3);
     }
     else if(bt_4.contains(me->x(), me->y()))
     {
         qDebug()<<"DDDDDDDDDDDDDDDDDDDDDDDDDDD";
-        //update(bt_4);
+        update(bt_4);
     }
+}
+void MainWindow::timer_Screen_Start(int value)
+{
+    screen_timer->start(value);
 }
 
 void MainWindow::changePage(const int page_number)
 {
 
+    switch (page_number)
+    {
+    case 0:
+         new ICON(this);
+        //timer_Screen_Start();
+        break;
+
+    default:
+        break;
+    }
 }
 
 

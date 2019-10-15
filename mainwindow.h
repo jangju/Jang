@@ -3,6 +3,7 @@
 
 #include "rect.h"
 #include "ICON.h"
+#include "base_widget.h"
 #include <QMainWindow>
 #include <QLabel>
 #include <QMouseEvent>
@@ -20,17 +21,24 @@ public:
     ~MainWindow();
     void changePage(const int page_number);
 
+    void timer_Screen_Start(int value = 90000);
 protected:
-    //virtual void paintEvent(QPaintEvent *me) Q_DECL_OVERRIDE;
+    // void paintEvent(QPaintEvent *me) Q_DECL_OVERRIDE;
     void mouseReleaseEvent(QMouseEvent *me) Q_DECL_OVERRIDE;//마우스를 뗄떼 인식한다.
     void mousePressEvent(QMouseEvent *me) Q_DECL_OVERRIDE;//마우스 누를떼 인식한다.
+
+
 private slots:
 
     void timer_Screen_Stop();
 private:
     Ui::MainWindow *ui;
+
+
     QTimer *screen_timer = nullptr;
     QLabel *text_label = nullptr;
+
+    Base_Widget *widget_page = nullptr;
 
     QRect bt_1;
     QRect bt_2;

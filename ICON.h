@@ -23,6 +23,8 @@ protected:
     void mousePressEvent(QMouseEvent *me) Q_DECL_OVERRIDE;
     void mouseReleaseEvent(QMouseEvent *me) Q_DECL_OVERRIDE;
 
+
+
 private slots:
     void iconshot();
 private:
