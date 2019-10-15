@@ -16,11 +16,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //setWindowFlags(Qt::CustomizeWindowHint);//윈도우 프레임을 없애는 함수
 
+    new ICON(this);
+
     QPalette pal = palette();
     pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_WINDOW)));//윈도우 배경 출력
     setPalette(pal);
 
-    new ICON(this);
+
     // (new Rect(this))->show();
     ////////////타이머 멈춤///////////////
     screen_timer = new QTimer(this);
@@ -32,6 +34,7 @@ MainWindow::~MainWindow()
     if(screen_timer != nullptr) screen_timer->stop();
     delete text_label;
     delete ui;
+
 
 }
 
@@ -57,11 +60,13 @@ void MainWindow::paintEvent(QPaintEvent *)//프로그램이 돌아가는동안 �
 */
 void MainWindow::timer_Screen_Stop()
 {
+
     if(b_once_setup)
     {
         b_once_setup = false;
         screen_timer->stop();
     }
+
 }
 void MainWindow::mousePressEvent(QMouseEvent *me)
 {

@@ -38,7 +38,7 @@ private:
 
 
 
-    bool b_check_click = true;
+
     bool b_once_setup = true;
 
     int i_base_image_flag;
