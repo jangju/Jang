@@ -26,20 +26,20 @@ ICON::ICON(QWidget *parent) :
     pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_SUNINJANG)));//선인장 배경 출력
     setPalette(pal);
     */
-
     iconshot();//아이콘들 출력
 
 }
 ICON::~ICON()
 {
-    delete IC_trash;
-    delete IC_baseball;
-    delete IC_lotto;
-    delete IC_memo;
-    delete IC_floder;
-    delete IC_calculator;
-    delete IC_end;
-    delete IC_end2;
+
+    if(IC_trash != nullptr) delete IC_trash;
+    if(IC_baseball != nullptr) delete IC_baseball;
+    if(IC_lotto != nullptr) delete IC_lotto;
+    if(IC_memo != nullptr) delete IC_memo;
+    if(IC_floder != nullptr) delete IC_floder;
+    if(IC_calculator != nullptr) delete IC_calculator;
+    if(IC_end != nullptr) delete IC_end;
+    if(IC_end2 != nullptr) delete IC_end2;
 
     //실행파일 해제
     if(Process!=nullptr)
@@ -53,32 +53,43 @@ ICON::~ICON()
 
 }
 
+void ICON::paintEvent(QPaintEvent *)
+{
+    QPainter q(this);
+    switch(i_base_image_flag)
+    {
+    case 0:
+        qDebug()<<"CASE 000000000000000000000";
+        q.drawPixmap(25, 700, QPixmap(END));
+        break;
+    case 1:
+        qDebug()<<"VIEW = Button image";
+        q.drawPixmap(25, 700, QPixmap(ENDD));
+        break;
+
+    default: break;
+
+    }
+
+    i_base_image_flag = 0;
+}
+
 void ICON::mousePressEvent(QMouseEvent *me)
 {
     if(me->button() != Qt::LeftButton) return;
 
-    QRect bt(23, 698, 53, 53);
+    QRect bt(25, 700, 53, 53);
 
     if(bt.contains(me->x(), me->y()))
     {
-        IC_end2 = new QLabel(this);
-        IC_end2->setGeometry(QRect(25, 700, 50, 50));
-        IC_end2->setPixmap(QPixmap(ENDD));//종료버튼
-        //if(b_once_setup)
-        //{
-        //   b_once_setup = false; //한번만 실행되게 함
-
-
-        qDebug()<<"ICONReleaseEvent";
+        i_base_image_flag = 1;
         update(bt);
-        //}
-    }
 
+    }
 
 }
 void ICON::mouseReleaseEvent(QMouseEvent *me)
 {
-
     if(me->button() != Qt::LeftButton) return;
 
     QRect end(23, 698, 53, 53);
@@ -89,17 +100,20 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     QRect bt_4(28, 418, 54, 54);
     QRect bt_5(28, 478, 54, 54);
 
-
     if(end.contains(me->x(),me->y()))
     {
+        qDebug()<<"VIEW = UI CLOSE";
         this->close();
+        update(end);
     }
     else if(bt_0.contains(me->x(), me->y()))
     {
+
         Process = new QProcess(this);
         Process->start("/home/lubuntu/baseball/baseball");
         qDebug()<<"BaseBall game START";
         update(bt_0);
+
     }
     else if(bt_1.contains(me->x(), me->y()))
     {
@@ -122,12 +136,13 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
         qDebug()<<"LeafPad";
         update(bt_3);
     }
+
     else if(bt_4.contains(me->x(),me->y()))
     {
-        QDesktopServices::openUrl(QUrl("file:///home/lubuntu",QUrl::TolerantMode));//폴더오픈 소스
+        QDesktopServices::openUrl(QUrl("file:///home/lubuntu", QUrl::TolerantMode));//폴더오픈 소스
         qDebug()<<"Folder Open";
-
     }
+
     else if(bt_5.contains(me->x(),me->y()))
     {
         Process = new QProcess(this);
@@ -139,9 +154,7 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
 }
 void ICON::iconshot()
 {
-    qDebug()<<"absbasbregreagwragwragwragbasb";
-
-
+    qDebug()<<"Iconshot";
 
     IC_trash = new QLabel(this);
     IC_trash->setGeometry(QRect(30, 60, 50, 50));
@@ -167,12 +180,12 @@ void ICON::iconshot()
     IC_calculator = new QLabel(this);
     IC_calculator->setGeometry(QRect(30, 480, 50, 50));
     IC_calculator->setPixmap(QPixmap(CALCULATOR));
-
+    /*
     IC_end = new QLabel(this);
     IC_end->setGeometry(QRect(25, 700, 50, 50));
     IC_end->setPixmap(QPixmap(END));
-
+    */
     //move(30, 300);
 
-
 }
+
