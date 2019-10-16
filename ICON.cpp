@@ -26,7 +26,7 @@ ICON::ICON(QWidget *parent) :
     pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_SUNINJANG)));//선인장 배경 출력
     setPalette(pal);
 
-    iconshot();//아이콘들 출력
+    //iconshot();//아이콘들 출력
 
 }
 ICON::~ICON()
@@ -58,34 +58,43 @@ void ICON::paintEvent(QPaintEvent *)
     {
     case 0:
         qDebug()<<"PaintEvent";
-        break;
+        q.drawPixmap(25, 700, QPixmap(END));
+        q.drawPixmap(30, 60, QPixmap(TRASH));
+        q.drawPixmap(30, 240, QPixmap(BASEBALL));
+        q.drawPixmap(30, 300, QPixmap(LOTTO));
+        q.drawPixmap(30, 360, QPixmap(MEMO));
+        q.drawPixmap(30, 420, QPixmap(FOLDER));
+        q.drawPixmap(30, 480, QPixmap(CALCULATOR));
+         break;
     case 1:
+
         qDebug()<<"VIEW = DEFALT END";
-        q.drawPixmap(25, 700, QPixmap(ENDD));
+        q.drawPixmap(26, 701, QPixmap(ENDD));
+
         break;
     case 2:
         qDebug()<<"VIEW = DEFALT TRAST";
-        q.drawPixmap(30, 60, QPixmap(TRASH));
+        q.drawPixmap(32, 62, QPixmap(TRASH));
         break;
     case 3:
         qDebug()<<"VIEW = DEFALT BASEBALL";
-        q.drawPixmap(30, 240, QPixmap(BASEBALL));
+        q.drawPixmap(32, 242, QPixmap(BASEBALL));
         break;
     case 4:
         qDebug()<<"VIEW = DEFALT LOTTO";
-        q.drawPixmap(30, 300, QPixmap(LOTTO));
+        q.drawPixmap(32, 302, QPixmap(LOTTO));
         break;
     case 5:
         qDebug()<<"VIEW = DEFALT MEMO";
-        q.drawPixmap(30, 360, QPixmap(MEMO));
+        q.drawPixmap(32, 362, QPixmap(MEMO));
         break;
     case 6:
         qDebug()<<"VIEW = DEFALT FOLDER";
-        q.drawPixmap(30, 420, QPixmap(FOLDER));
+        q.drawPixmap(32, 422, QPixmap(FOLDER));
         break;
     case 7:
         qDebug()<<"VIEW = DEFALT CALCULATOR";
-        q.drawPixmap(30, 480, QPixmap(CALCULATOR));
+        q.drawPixmap(32, 482, QPixmap(CALCULATOR));
         break;
 
         default: break;
@@ -110,7 +119,9 @@ void ICON::mousePressEvent(QMouseEvent *me)
     if(bt_1.contains(me->x(), me->y()))
     {
         i_base_image_flag = 1;
+
         update(bt_1);
+
     }
     else if(bt_2.contains(me->x(), me->y()))
     {
@@ -147,8 +158,7 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
 {
     if(me->button() != Qt::LeftButton) return;
 
-
-    QRect bt_0(28, 178, 54, 54);
+    QRect bt_0(28, 58, 54, 54);
     QRect bt_1(28, 238, 54, 54);
     QRect bt_2(28, 298, 54, 54);
     QRect bt_3(28, 358, 54, 54);
@@ -160,14 +170,14 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     if(end.contains(me->x(),me->y()))
     {
         qDebug()<<"VIEW = UI CLOSE";
-        this->close();
+        //this->close();
         update(end);
     }
     else if(bt_0.contains(me->x(), me->y()))
     {
         Process = new QProcess(this);
         Process->start("/home/lubuntu/baseball/baseball");
-        qDebug()<<"BaseBall game START";
+        qDebug()<<"TRAST START";
         update(bt_0);
     }
     else if(bt_1.contains(me->x(), me->y()))
@@ -191,7 +201,6 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
         qDebug()<<"LeafPad";
         update(bt_3);
     }
-
     else if(bt_4.contains(me->x(),me->y()))
     {
         QDesktopServices::openUrl(QUrl("file:///home/lubuntu", QUrl::TolerantMode));//폴더오픈 소스
