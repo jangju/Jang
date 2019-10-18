@@ -21,14 +21,13 @@ ICON::ICON(QWidget *parent) :
     setAutoFillBackground(true);//배경을 쓰려면 필요함
     setAttribute(Qt::WA_DeleteOnClose);
 
-
     QPalette pal = palette();
     pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_SUNINJANG)));//선인장 배경 출력
     setPalette(pal);
 
     //iconshot();//아이콘들 출력
-
 }
+
 ICON::~ICON()
 {
     if(IC_trash != nullptr) delete IC_trash;
@@ -67,10 +66,8 @@ void ICON::paintEvent(QPaintEvent *)
         q.drawPixmap(30, 480, QPixmap(CALCULATOR));
          break;
     case 1:
-
         qDebug()<<"VIEW = DEFALT END";
         q.drawPixmap(26, 701, QPixmap(ENDD));
-
         break;
     case 2:
         qDebug()<<"VIEW = DEFALT TRAST";
@@ -98,9 +95,7 @@ void ICON::paintEvent(QPaintEvent *)
         break;
 
         default: break;
-
     }
-
     i_base_image_flag = 0;
 }
 
@@ -119,9 +114,7 @@ void ICON::mousePressEvent(QMouseEvent *me)
     if(bt_1.contains(me->x(), me->y()))
     {
         i_base_image_flag = 1;
-
         update(bt_1);
-
     }
     else if(bt_2.contains(me->x(), me->y()))
     {
@@ -206,7 +199,6 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
         QDesktopServices::openUrl(QUrl("file:///home/lubuntu", QUrl::TolerantMode));//폴더오픈 소스
         qDebug()<<"Folder Open";
     }
-
     else if(bt_5.contains(me->x(),me->y()))
     {
         Process = new QProcess(this);
@@ -214,7 +206,6 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
         qDebug()<<"Galculator Program START";
         update(bt_5);
     }
-
 }
 void ICON::iconshot()
 {
