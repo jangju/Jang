@@ -3,17 +3,17 @@
 
 #include <QDesktopServices> // 파일오픈 설정
 
-#define TRASH "/home/lubuntu/recttest/Image/trash.png"
-#define BASEBALL "/home/lubuntu/recttest/Image/BASEBALLICON.png"
-#define LOTTO "/home/lubuntu/recttest/Image/Lotto.png"
-#define MEMO "/home/lubuntu/recttest/Image/memo.png"
-#define FOLDER "/home/lubuntu/recttest/Image/folder.png"
-#define CALCULATOR "/home/lubuntu/recttest/Image/calculator.png"
-#define END "/home/lubuntu/recttest/Image/close.png"
-#define ENDD "/home/lubuntu/recttest/Image/close2.png"
+#define TRASH "/home/lubuntu/TEST/RECTTEST/Image/trash.png"
+#define BASEBALL "/home/lubuntu/TEST/RECTTEST/Image/BASEBALLICON.png"
+#define LOTTO "/home/lubuntu/TEST/RECTTEST/Image/Lotto.png"
+#define MEMO "/home/lubuntu/TEST/RECTTEST/Image/memo.png"
+#define FOLDER "/home/lubuntu/TEST/RECTTEST/Image/folder.png"
+#define CALCULATOR "/home/lubuntu/TEST/RECTTEST/Image/calculator.png"
+#define END "/home/lubuntu/TEST/RECTTEST/Image/close.png"
+#define ENDD "/home/lubuntu/TEST/RECTTEST/Image/close2.png"
 
-#define BG_WINDOW "/home/lubuntu/recttest/Image/window.png"
-#define BG_SUNINJANG "/home/lubuntu/recttest/Image/suninjang.png"
+#define BG_WINDOW "/home/lubuntu/TEST/RECTTEST/Image/window.png"
+#define BG_SUNINJANG "/home/lubuntu/TEST/RECTTEST/Image/suninjang.png"
 
 ICON::ICON(QWidget *parent) :
     QWidget(parent)
@@ -176,14 +176,14 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     else if(bt_1.contains(me->x(), me->y()))
     {
         Process = new QProcess(this);
-        Process->start("/home/lubuntu/baseball/baseball");
+        Process->start("/home/lubuntu/TEST/Baseball/baseball");
         qDebug()<<"BaseBall game START";
         update(bt_1);
     }
     else if(bt_2.contains(me->x(), me->y()))
     {
         Process = new QProcess(this);
-        Process->start("/home/lubuntu/lotto/lotto");
+        Process->start("/home/lubuntu/TEST/LOTTO/lotto");
         qDebug()<<"Lotto TEST START";
         update(bt_2);
     }

@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = lotto1.0.0
-DISTDIR = /home/lubuntu/lotto/.tmp/lotto1.0.0
+DISTDIR = /home/lubuntu/TEST/LOTTO/.tmp/lotto1.0.0
 LINK          = g++
 LFLAGS        = -m32 -Wl,-rpath,/opt/Qt/5.5/gcc -Wl,-rpath,/opt/Qt/5.5/gcc/lib
 LIBS          = $(SUBLIBS) -L/opt/Qt/5.5/gcc/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -1272,7 +1272,7 @@ moc_lotto.cpp: /opt/Qt/5.5/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt/5.5/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt/5.5/gcc/include/QtWidgets/qabstractbutton.h \
 		lotto.h
-	/opt/Qt/5.5/gcc/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc/mkspecs/linux-g++-32 -I/home/lubuntu/lotto -I/opt/Qt/5.5/gcc/include -I/opt/Qt/5.5/gcc/include/QtWidgets -I/opt/Qt/5.5/gcc/include/QtGui -I/opt/Qt/5.5/gcc/include/QtCore lotto.h -o moc_lotto.cpp
+	/opt/Qt/5.5/gcc/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc/mkspecs/linux-g++-32 -I/home/lubuntu/TEST/LOTTO -I/opt/Qt/5.5/gcc/include -I/opt/Qt/5.5/gcc/include/QtWidgets -I/opt/Qt/5.5/gcc/include/QtGui -I/opt/Qt/5.5/gcc/include/QtCore lotto.h -o moc_lotto.cpp
 
 moc_answer.cpp: /opt/Qt/5.5/gcc/include/QtCore/QObject \
 		/opt/Qt/5.5/gcc/include/QtCore/qobject.h \
@@ -1342,7 +1342,7 @@ moc_answer.cpp: /opt/Qt/5.5/gcc/include/QtCore/QObject \
 		/opt/Qt/5.5/gcc/include/QtCore/qset.h \
 		/opt/Qt/5.5/gcc/include/QtCore/qcontiguouscache.h \
 		answer.h
-	/opt/Qt/5.5/gcc/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc/mkspecs/linux-g++-32 -I/home/lubuntu/lotto -I/opt/Qt/5.5/gcc/include -I/opt/Qt/5.5/gcc/include/QtWidgets -I/opt/Qt/5.5/gcc/include/QtGui -I/opt/Qt/5.5/gcc/include/QtCore answer.h -o moc_answer.cpp
+	/opt/Qt/5.5/gcc/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc/mkspecs/linux-g++-32 -I/home/lubuntu/TEST/LOTTO -I/opt/Qt/5.5/gcc/include -I/opt/Qt/5.5/gcc/include/QtWidgets -I/opt/Qt/5.5/gcc/include/QtGui -I/opt/Qt/5.5/gcc/include/QtCore answer.h -o moc_answer.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

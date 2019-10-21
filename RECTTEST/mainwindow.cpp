@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QPainter>
 #include <QTimer>
-#define BG_WINDOW "/home/lubuntu/recttest/Image/window.png"
+#define BG_WINDOW "/home/lubuntu/TEST/RECTTEST/Image/window.png"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent/*,Qt::FramelessWindowHint프례임을 없엠( 메뉴바 )*/),
