@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>그리기 테스트</string>
+   <string>바 탕 화 면</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
  </widget>

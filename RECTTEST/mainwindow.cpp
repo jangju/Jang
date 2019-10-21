@@ -6,12 +6,14 @@
 #include <QDebug>
 #include <QPainter>
 #include <QTimer>
+
 #define BG_WINDOW "/home/lubuntu/TEST/RECTTEST/Image/window.png"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent/*,Qt::FramelessWindowHint프례임을 없엠( 메뉴바 )*/),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
     QPalette pal = palette();
@@ -55,7 +57,6 @@ void MainWindow::paintEvent(QPaintEvent *)//프로그램이 돌아가는동안 �
 */
 void MainWindow::timer_Screen_Stop()
 {
-
     if(b_once_setup)
     {
         b_once_setup = false;
