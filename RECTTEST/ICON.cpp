@@ -12,6 +12,7 @@
 #define END "/home/lubuntu/recttest/Image/close.png"
 #define ENDD "/home/lubuntu/recttest/Image/close2.png"
 
+#define BG_WINDOW "/home/lubuntu/recttest/Image/window.png"
 #define BG_SUNINJANG "/home/lubuntu/recttest/Image/suninjang.png"
 
 ICON::ICON(QWidget *parent) :
@@ -22,7 +23,7 @@ ICON::ICON(QWidget *parent) :
     setAttribute(Qt::WA_DeleteOnClose);
 
     QPalette pal = palette();
-    pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_SUNINJANG)));//선인장 배경 출력
+    pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_WINDOW)));//선인장 배경 출력
     setPalette(pal);
 
     //iconshot();//아이콘들 출력
@@ -163,13 +164,12 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     if(end.contains(me->x(),me->y()))
     {
         qDebug()<<"VIEW = UI CLOSE";
-        //this->close();
+        this->close();
         update(end);
     }
     else if(bt_0.contains(me->x(), me->y()))
     {
-        Process = new QProcess(this);
-        Process->start("/home/lubuntu/baseball/baseball");
+        QDesktopServices::openUrl(QUrl("file:/home/lubuntu/.local/share/Trash/", QUrl::TolerantMode));//폴더오픈 소스
         qDebug()<<"TRAST START";
         update(bt_0);
     }
@@ -196,7 +196,7 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)
     }
     else if(bt_4.contains(me->x(),me->y()))
     {
-        QDesktopServices::openUrl(QUrl("file:///home/lubuntu", QUrl::TolerantMode));//폴더오픈 소스
+        QDesktopServices::openUrl(QUrl("file:/home/lubuntu", QUrl::TolerantMode));//폴더오픈 소스
         qDebug()<<"Folder Open";
     }
     else if(bt_5.contains(me->x(),me->y()))
