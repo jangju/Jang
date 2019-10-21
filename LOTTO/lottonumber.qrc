@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>answer.cpp</file>
+        <file>answer.h</file>
+        <file>lotto.cpp</file>
+        <file>lotto.h</file>
+        <file>main.cpp</file>
+        <file>IMAGE/6.png</file>
+        <file>IMAGE/5.png</file>
+        <file>IMAGE/4.png</file>
+        <file>IMAGE/3.png</file>
+        <file>IMAGE/2.png</file>
+        <file>IMAGE/1.png</file>
+        <file>IMAGE/BONUS.png</file>
+    </qresource>
+</RCC>
