@@ -11,13 +11,19 @@
 #include <QMouseEvent>
 #include <QPalette>
 #include <QProcess>
-
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
+#include <QCalendarWidget>
+#include <QMessageBox>
 class ICON : public QWidget
 {
     Q_OBJECT
 public:
     explicit ICON(QWidget *parent = 0);
     virtual ~ICON();
+
+
 protected:
     void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
     void mousePressEvent(QMouseEvent *me) Q_DECL_OVERRIDE;
@@ -28,7 +34,9 @@ protected:
 private slots:
     void iconshot();
 private:
-
+    QMessageBox msgBox;
+    QCalendarWidget *calendarWidget = nullptr;
+    QMenuBar *menubar;
     QLabel *IC_trash = nullptr;
     QLabel *IC_baseball = nullptr;
     QLabel *IC_lotto = nullptr;
@@ -38,14 +46,13 @@ private:
     QLabel *IC_end = nullptr;
     QLabel *IC_end2 = nullptr;
 
-
-
-
+    bool clicked;
     bool b_once_setup = true;
 
     int i_base_image_flag;
 
     QProcess *Process;
+
 
 };
 

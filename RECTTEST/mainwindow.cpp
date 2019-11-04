@@ -20,11 +20,17 @@ MainWindow::MainWindow(QWidget *parent) :
     pal.setBrush(QPalette::Background, QBrush(QPixmap(BG_WINDOW)));//윈도우 배경 출력
     setPalette(pal);
 
-    changePage(0);
+    changePage(0);//ICON 클래스 출력
+
+
     // (new Rect(this))->show();
     ////////////타이머 멈춤///////////////
     screen_timer = new QTimer(this);
     connect(screen_timer, SIGNAL(timeout()), this, SLOT(timer_Screen_Stop()));
+
+
+
+
 
 }
 
@@ -123,7 +129,7 @@ void MainWindow::changePage(const int page_number)
     switch (page_number)
     {
     case 0:
-         new ICON(this);
+        new ICON(this);
         //timer_Screen_Start();
         break;
 

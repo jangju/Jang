@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -39,6 +40,10 @@ private:
     QLabel *text_label = nullptr;
 
     Base_Widget *widget_page = nullptr;
+
+
+
+
 
     QRect bt_1;
     QRect bt_2;
