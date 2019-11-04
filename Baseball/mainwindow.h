@@ -46,6 +46,8 @@ private:
     bool clicked;//클릭 참거
 
     int stball;//strick,ball 개수 돌리기
+
+
 };
 
 #endif // MAINWINDOW_H
