@@ -34,7 +34,7 @@ protected:
 private slots:
     void iconshot();
 private:
-    QMessageBox msgBox;
+
     QCalendarWidget *calendarWidget = nullptr;
     QMenuBar *menubar;
     QLabel *IC_trash = nullptr;
@@ -46,6 +46,7 @@ private:
     QLabel *IC_end = nullptr;
     QLabel *IC_end2 = nullptr;
 
+    QMessageBox msgBox;
     bool clicked;
     bool b_once_setup = true;
 

@@ -195,25 +195,27 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)//마우스 뗄떼
 
     if(bt_1.contains(me->x(),me->y()))
     {
-        msgBox.setText("dfaefe0");
+        msgBox.setText("전원을 종료 하시겠습니까?");
         msgBox.setStyleSheet("QLabel{min-width:300 px; font-size: 24px;} QPushButton{ width:200px; font-size: 18px;}");
         msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
         msgBox.setDefaultButton(QMessageBox::No);
-        if(clicked == false)
+
+        if(clicked == true)
         {
             int ret = msgBox.exec();
             switch (ret)
             {
             case QMessageBox::Yes:
-               msgBox.information(this,"Yes","Yes Yes");
+               //msgBox.information(this,"Yes","Yes Yes");
                this->close();
-                break;
+               break;
             case QMessageBox::No:
-                msgBox.information(this,"No","No No");
-                break;
+               msgBox.information(this,"No","No No");
+               break;
             }
          }
         qDebug()<<"VIEW = UI CLOSE";
+
         update(bt_1);
     }
     else if(bt_2.contains(me->x(), me->y()))
@@ -258,15 +260,14 @@ void ICON::mouseReleaseEvent(QMouseEvent *me)//마우스 뗄떼
     }
     else if(bt_8.contains(me->x(),me->y()))
     {
-        calendarWidget = new QCalendarWidget(this);
-        calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
-        calendarWidget->setGeometry(QRect(200, 140, 500, 200));
-        qDebug()<<"CALENDER Program START";
+        Process = new QProcess(this);
+        Process->start("/usr/bin/orage");
+        qDebug()<<"CALENDER Program START11111";
         update(bt_8);
     }
     else if(bt_9.contains(me->x(),me->y()))
     {
-        qDebug()<<"CALENDER Program START";
+        qDebug()<<"START Program START";
         update(bt_9);
     }
 }
